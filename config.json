@@ -1,0 +1,14 @@
+{
+  "streams": {
+    "pattern": {
+      "channels": {
+        "0": {
+          "url": "rtsp://rtsp.stream/pattern",
+          "debug": false,
+          "audio": true
+        }
+      },
+      "name": "pattern"
+    }
+  }
+}
