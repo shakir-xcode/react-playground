@@ -37,7 +37,7 @@ const Navbar = () => {
             <Link to="/upload">FileUpload</Link>
           </li>
           <li>
-            <Link to="/room">Video Call</Link>
+            <Link to="/lobby">Video Call</Link>
           </li>
         </ul>
       </div>
