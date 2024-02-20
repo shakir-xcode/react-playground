@@ -39,6 +39,9 @@ const Navbar = () => {
           <li>
             <Link to="/lobby">Video Call</Link>
           </li>
+          <li>
+            <Link to="/learning">Learn</Link>
+          </li>
         </ul>
       </div>
       <div className=" ml-auto">

@@ -3,7 +3,7 @@ import ReactPlayer from "react-player";
 import peer from "./services/peer";
 import { getSocket } from "./socket";
 
-const socket = getSocket();
+// const socket = getSocket();
 const RoomPage = () => {
   // const [remoteSocketId, setRemoteSocketId] = useState(null);
   const [myStream, setMyStream] = useState();

@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import ReactPlayer from "react-player/streamable";
 
 let socket, peerConnection;
-if (!socket) socket = io("http://localhost:4000");
+// if (!socket) socket = io("http://localhost:4000");
 
 const createConn = () => {
   if (peerConnection) return peerConnection;

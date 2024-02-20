@@ -14,6 +14,7 @@ import Room from "./components/webRTC demo/Room";
 import RoomPage from "./new webRTC/Room";
 import LobbyScreen from "./new webRTC/Lobby";
 import { SocketProvider } from "./new webRTC/context/SocketProvider";
+import Study from "./components/learning/Study";
 
 export const LoginContext = createContext();
 
@@ -22,24 +23,23 @@ function App() {
 
   return (
     <BrowserRouter>
-      <SocketProvider>
-        <LoginContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/userData" element={<UserItems />} />
-            <Route path="/hooks" element={<Hooks />} />
-            <Route path="/boxes" element={<Boxes />} />
-            <Route path="/tetris" element={<Tetris />} />
-            <Route path="/upload" element={<Upload />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/lobby" element={<LobbyScreen />} />
-            <Route path="/room/:roomId" element={<RoomPage />} />
-          </Routes>
-        </LoginContext.Provider>
-      </SocketProvider>
+      <LoginContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/userData" element={<UserItems />} />
+          <Route path="/hooks" element={<Hooks />} />
+          <Route path="/boxes" element={<Boxes />} />
+          <Route path="/tetris" element={<Tetris />} />
+          <Route path="/upload" element={<Upload />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/lobby" element={<LobbyScreen />} />
+          <Route path="/room/:roomId" element={<RoomPage />} />
+          <Route path="/learning" element={<Study />} />
+        </Routes>
+      </LoginContext.Provider>
     </BrowserRouter>
   );
 }
