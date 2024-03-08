@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { io } from "socket.io-client";
+// import { io } from "socket.io-client";
 import { useSocket } from "./context/SocketProvider";
 import { getSocket } from "./socket";
 

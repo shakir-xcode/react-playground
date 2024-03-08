@@ -78,7 +78,92 @@ Avoids directly modifying DOM elements within functional components.`,
 
     "index": 1,
     "answers": [
+      `The Temporal Dead Zone (TDZ) in JavaScript refers to a specific period in the execution of your code where variables declared using let and const are inaccessible even though they are technically "in scope.
+1. When does the TDZ occur?
 
+The TDZ exists from the beginning of the block (usually curly braces {}) where the variable is declared until the line where it is actually initialized with a value.
+2. What actions are restricted in the TDZ?
+
+You cannot read the value of a let or const variable within the TDZ.
+You cannot re-declare a let or const variable with the same name within the TDZ.
+`,
+
+      "Browsers don't inherently understand JSX (JavaScript XML). JSX is a syntax extension used with React to describe UI components. It needs to be transpiled into regular JavaScript using tools like Babel before being sent to the browser. The transpiler converts JSX into React.createElement calls, which the browser interprets as regular JavaScript objects representing the virtual DOM.",
+
+      `
+function maxRepeatingCharacter(str) {
+  const charCount = {};
+
+  // Count occurrences of each character
+  for (const char of str) {
+    charCount[char] = (charCount[char] || 0) + 1;
+  }
+
+  // Find the character with the maximum count
+  let maxChar = '', maxCount = 0;
+  for (const char in charCount) {
+    if (charCount[char] > maxCount) {
+      maxChar = char;
+      maxCount = charCount[char];
+    }
+  }
+
+  return { character: maxChar, count: maxCount };
+}
+
+const inputString = "Hello world!";
+const result = maxRepeatingCharacter(inputString);
+conso
+`,
+      "DO--",
+      `Promises in JavaScript: A Deep Dive
+Promises are powerful tools in JavaScript that enable asynchronous programming. They manage the results of potentially asynchronous operations, providing a cleaner and more readable way to handle them compared to traditional callbacks.
+
+Key Concepts:
+
+States: A promise can be in one of three states:
+
+Pending: Initial state, operation hasn't finished yet.
+Fulfilled: Operation completed successfully, value available.
+Rejected: Operation failed, reason provided.
+Chaining: You can chain .then and .catch methods to handle the promise's value or error and create complex asynchronous flows.
+
+Callbacks: Used within .then and .catch to specify what to do with the resolved value or rejection reason.
+
+How it Works:
+
+Promise Creation: You create a promise using the Promise constructor function, passing an executor function as an argument.
+Executor Function: This function takes two arguments, resolve and reject:
+resolve: Used to signal successful completion with a value.
+reject: Used to signal failure with a reason (often an error).
+Async Operation: Inside the executor, you perform the asynchronous operation (e.g., fetching data, setting a timer).
+Result Handling: Based on the operation's outcome:
+Success: Call resolve with the result value, moving the promise to the "fulfilled" state.
+Failure: Call reject with the reason for failure, moving the promise to the "rejected" state.`,
+
+      "Pure functions are functions that, given the same input, always return the same output and have no side effects. They don't modify external state or rely on external state changes. Pure functions are predictable, easy to test, and promote maintainable and scalable code in functional programming paradigms.",
+
+      `A polyfill is a piece of code (usually JavaScript) that provides functionality that is not natively supported by a web browser. It allows developers to use new features of the language or APIs in environments that lack native support. Polyfills fill the gaps, ensuring consistent behavior across different browsers.
+DO--
+`,
+      "what do you mean by synchronous and asynchronous",
+      "ES6/ES7 things you have used",
+      "Why do we need arrow functions?",
+      "What does Object.freeze does",
+      "What is event bubbling and how to prevent it",
+      "What is Semantic HTML? name some HTML tags",
+      "Difference between ID and Class in HTML tags",
+      "What do you mean by CSS box modal",
+      "Explain CSS specificity",
+      "Different CSS positioning elements",
+      "Make a automated Time using ReactJS",
+      "Explain Different lifecycle methods",
+      "Difference between Pure component and Normal component",
+      "What is Content API",
+      "What is HOC",
+      "Controlled and uncontrolled components",
+      "What do you mean by CSS box modal",
+      "How do we write a functional setstate and what is the use of it"
     ]
   },
 
