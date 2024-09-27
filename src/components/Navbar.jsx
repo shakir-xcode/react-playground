@@ -22,6 +22,9 @@ const Navbar = () => {
             <Link to="/about">About</Link>
           </li>
           <li>
+            <Link to="/blank">Blank</Link>
+          </li>
+          <li>
             <Link to="/userData">UserData</Link>
           </li>
           <li>
@@ -29,6 +32,9 @@ const Navbar = () => {
           </li>
           <li>
             <Link to="/boxes">Boxes</Link>
+          </li>
+          <li>
+            <Link to="/editor">Editor</Link>
           </li>
           <li>
             <Link to="/tetris">Tetris</Link>
@@ -41,6 +47,9 @@ const Navbar = () => {
           </li>
           <li>
             <Link to="/learning">Learn</Link>
+          </li>
+          <li>
+            <Link to="/problems">Problems</Link>
           </li>
         </ul>
       </div>

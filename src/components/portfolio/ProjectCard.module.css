@@ -1,0 +1,49 @@
+/* Container for 3D perspective */
+.card_container {
+    perspective: 1000px; /* Provides the depth for 3D effect */
+    width: 300px;
+    height: 200px;
+    position: relative;
+  }
+  
+  /* The 3D card that will rotate */
+  .card_rotate {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d; /* Ensures the 3D effect is preserved */
+    transition: transform 0.8s ease-in-out; /* Smooth transition on hover */
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    border: 0px solid #ccc;
+  }
+  
+  /* Rotate the card on hover */
+  .card_container:hover .card-rotate {
+    transform: rotateY(180deg); /* Rotates the div along the Y-axis */
+  }
+  
+  /* Styling for the front and back faces of the card */
+  .card_face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hides the back of the div when it rotates */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+  }
+  
+  /* Front face */
+  .card_front {
+    background-color: #f0f0f0;
+  }
+  
+  /* Back face */
+  .card_back {
+    background-color: #4caf50;
+    color: white;
+    transform: rotateY(180deg); /* Back face is rotated 180 degrees to align with the flip */
+  }
+  

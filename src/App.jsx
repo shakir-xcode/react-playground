@@ -15,10 +15,15 @@ import RoomPage from "./new webRTC/Room";
 import LobbyScreen from "./new webRTC/Lobby";
 import { SocketProvider } from "./new webRTC/context/SocketProvider";
 import Study from "./components/learning/Study";
+import Test from "./pages/Test";
+import Blank from "./pages/Blank";
+import Problems from "./pages/Problems";
+import Editor from "./pages/Editor";
 
 export const LoginContext = createContext();
 
 function App() {
+  // console.log("app rendered..");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
@@ -27,9 +32,11 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/blank" element={<Blank />} />
           <Route path="/about" element={<About />} />
           <Route path="/userData" element={<UserItems />} />
           <Route path="/hooks" element={<Hooks />} />
+          <Route path="/editor" element={<Editor />} />
           <Route path="/boxes" element={<Boxes />} />
           <Route path="/tetris" element={<Tetris />} />
           <Route path="/upload" element={<Upload />} />
@@ -38,6 +45,8 @@ function App() {
           <Route path="/lobby" element={<LobbyScreen />} />
           <Route path="/room/:roomId" element={<RoomPage />} />
           <Route path="/learning" element={<Study />} />
+          <Route path="/problems" element={<Problems />} />
+          <Route path="/test" element={<Test />} />
         </Routes>
       </LoginContext.Provider>
     </BrowserRouter>
