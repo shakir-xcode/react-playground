@@ -51,6 +51,9 @@ const Navbar = () => {
           <li>
             <Link to="/problems">Problems</Link>
           </li>
+          <li>
+            <Link to="/invoice">Invoice</Link>
+          </li>
         </ul>
       </div>
       <div className=" ml-auto">

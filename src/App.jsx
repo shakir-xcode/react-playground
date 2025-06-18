@@ -19,6 +19,7 @@ import Test from "./pages/Test";
 import Blank from "./pages/Blank";
 import Problems from "./pages/Problems";
 import Editor from "./pages/Editor";
+import InvoiceGenerator from "./pages/Invoice";
 
 export const LoginContext = createContext();
 
@@ -47,6 +48,7 @@ function App() {
           <Route path="/learning" element={<Study />} />
           <Route path="/problems" element={<Problems />} />
           <Route path="/test" element={<Test />} />
+          <Route path="/invoice" element={<InvoiceGenerator />} />
         </Routes>
       </LoginContext.Provider>
     </BrowserRouter>

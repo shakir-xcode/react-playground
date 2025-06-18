@@ -2,13 +2,14 @@ import React, { useCallback, useState, memo } from "react";
 
 const Boxes = () => {
   const [color, setColor] = useState([false, false, false, false]);
-  const chgColor = (index) => {
+  const chgColor = useCallback((index) => {
     setColor(() => {
       const updatedColors = [false, false, false, false];
       updatedColors[index] = true;
       return updatedColors;
     });
-  };
+  }
+, []);
   return (
     <div className="flex flex-col gap-2 m-3">
       {/* {color.map((col, index) => ( */}
@@ -21,7 +22,7 @@ const Boxes = () => {
   );
 };
 
-const Box = memo (({ chgColor, color, index }) => {
+const Box = memo(({ chgColor, color, index }) => {
   //   const [color, setColor] = useState(false);
   console.log("box rendered");
   return (
