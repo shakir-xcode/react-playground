@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import useTraverse from "./hooks/useTraverse";
+import explorer from "./data";
 
 const Folder = ({ subTree }) => {
+  const [tree, setTree] = useState(explorer);
   const [hidden, setHidden] = useState(false);
   const [inpHidden, setInpHidden] = useState({
     isFolder: false,
     visible: false,
   });
-  const [insertNode] = useTraverse();
+  const [insertNode, deleteNode] = useTraverse();
+
   const handleAddFolder = (e) => {
     e.stopPropagation();
     setInpHidden((pre) => ({ isFolder: true, visible: !pre.visible }));
@@ -16,6 +19,12 @@ const Folder = ({ subTree }) => {
   const handleAddFile = (e) => {
     e.stopPropagation();
     setInpHidden((pre) => ({ isFolder: false, visible: !pre.visible }));
+  };
+
+  const handleDelete = (e, folderId) => {
+    e.stopPropagation();
+    // console.log("Here...", deleteNode);
+    setTree(deleteNode(explorer, folderId));
   };
 
   const handleSubmission = (e, id, isFolder) => {
@@ -56,6 +65,12 @@ const Folder = ({ subTree }) => {
                 className="bg-slate-200 text-xs cursor-default"
               >
                 File +
+              </span>
+              <span
+                onClick={(e) => handleDelete(e, subTree.id)}
+                className="bg-slate-200 text-xs cursor-default"
+              >
+                Delete
               </span>
             </div>
           </div>

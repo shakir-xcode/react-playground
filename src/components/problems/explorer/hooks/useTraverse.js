@@ -8,7 +8,16 @@ const useTraverse = () => {
         tree.items.forEach(item => insertNode(item, folderId, itemName, isFolder));
     }
 
-    return [insertNode]
+    function deleteNode(tree, folderId) {
+        if (tree.id === folderId && tree.isFolder) {
+            delete tree.items;
+            return;
+        }
+
+        tree.items.forEach(item => deleteNode(item, folderId));
+    }
+
+    return [insertNode, deleteNode]
 }
 
 export default useTraverse;
