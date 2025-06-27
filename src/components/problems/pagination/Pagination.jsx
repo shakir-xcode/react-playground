@@ -2,18 +2,20 @@ import React, { useEffect, useState } from "react";
 
 const URL = "https://dummyjson.com/products?limit=50";
 
-const fetchProducts = async () => {
-  console.log("Making network request...");
-  const res = await fetch(URL);
-  if (!res.ok) return null;
-  const data = await res.json();
+const ITEMS_PER_PAGE = 10;
 
+const fetchProducts = async () => {
+  const res = await fetch(URL);
+  if (!res.ok) throw new Error("Something went wrong");
+  const data = await res.json();
   return data;
 };
 
-const fetchProductsByPage = (products, page) => {
-  const pageCount = Math.floor(products.length / 10);
-  return [products.slice(page * 10 - 10, page * 10), pageCount];
+const paginate = (products, page) => {
+  const pageCount = Math.ceil(products.length / ITEMS_PER_PAGE);
+  const start = page * ITEMS_PER_PAGE - ITEMS_PER_PAGE;
+  const currentItems = products.slice(start, start + ITEMS_PER_PAGE);
+  return [currentItems, pageCount];
 };
 
 const Pagination = () => {
@@ -22,23 +24,27 @@ const Pagination = () => {
   const [pageProducts, setPageProducts] = useState([]);
   const [pageCount, setPageCount] = useState(0);
 
-  const makePageData = async (pId = 1, allProducts) => {
-    if (allProducts.length === 0) {
-      const res = await fetchProducts();
-      setProducts(() => res.products);
-    }
-
-    const [pds, pCount] = fetchProductsByPage(products, pId);
-    setPageProducts(pds);
-    setPageCount(pCount);
-    setPageId(pId);
+  const loadPage = (pageNumber, allProducts = products) => {
+    const [currentItems, totalPages] = paginate(allProducts, pageNumber);
+    setPageProducts(currentItems);
+    setPageCount(totalPages);
+    setPageId(pageNumber);
   };
 
   useEffect(() => {
-    (async function () {
-      await makePageData(1, []);
-    })();
+    const init = async () => {
+      try {
+        const { products } = await fetchProducts();
+        setProducts(products);
+        loadPage(1, products);
+      } catch (error) {
+        console.error(error.message || "something went wrong...");
+      }
+    };
+
+    init();
   }, []);
+
   return (
     <div>
       <p className="text-bold text-xl mb-2">Page: {pageId}</p>
@@ -54,7 +60,7 @@ const Pagination = () => {
           <button
             className="text-white"
             onClick={() => {
-              makePageData(pageId - 1, products);
+              loadPage(pageId - 1);
             }}
           >
             Prev
@@ -70,7 +76,7 @@ const Pagination = () => {
                     ? " text-gray-800 bg-slate-200"
                     : "text-black"
                 } border px-3 py-2 cursor-pointer`}
-                onClick={() => makePageData(index + 1, products)}
+                onClick={() => loadPage(index + 1)}
               >
                 {index + 1}
               </span>
@@ -81,7 +87,7 @@ const Pagination = () => {
           <button
             className="text-white"
             onClick={() => {
-              makePageData(pageId + 1, products);
+              loadPage(pageId + 1);
             }}
           >
             Next
