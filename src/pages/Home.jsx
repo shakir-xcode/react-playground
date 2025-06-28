@@ -1,13 +1,13 @@
 import React from "react";
-import Pagination from "../components/problems/pagination/Pagination";
-import StopWatch from "../components/problems/stopwatch/StopWatch";
+import InfiniteScroller from "../components/problems/infinite-scroll/InfiniteScroller";
+import InfiniteScrollerSecond from "../components/problems/infinite-scroll/InfiniteScrollerSecond";
 
 const Home = () => {
   return (
     <div>
       <h1>This is homepage</h1>
       <div className="my-6" />
-      <StopWatch />
+      <InfiniteScrollerSecond />
     </div>
   );
 };
